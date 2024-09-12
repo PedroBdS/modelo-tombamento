@@ -9,8 +9,8 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-    # https://drive.google.com/file/d/1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY/view?usp=drive_link
-    url = 'https://drive.google.com/uc?id=1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY'
+    # https://drive.google.com/file/d/1-953dCBQFfljHfJthTVKL2BdwUsyj9Z0/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1-953dCBQFfljHfJthTVKL2BdwUsyj9Z0'
     
     gdown.download(url,'indentificacao_de_latas.keras')
     interpreter = tf.lite.Interpreter(model_path='indentificacao_de_latas.keras')
