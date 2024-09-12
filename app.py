@@ -12,13 +12,11 @@ def carrega_modelo():
     # https://drive.google.com/file/d/1-AFgHkiI7lYIBpgBcG4jETiYeyNQSvdk/view?usp=drive_link
     url = 'https://drive.google.com/uc?id=1-AFgHkiI7lYIBpgBcG4jETiYeyNQSvdk'
     
-    uploaded_file = st.file_uploader("Arraste e solte o modelo_quantizado16bits.tflite aqui ou clique para selecionar", type=['tflite'])
-    if uploaded_file is not None:
-        interpreter = uploaded_file.read()
-        interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
-        interpreter.allocate_tensors()
+    gdown.download(url,'modelo_quantizado16bits.tflite')
+    interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
+    interpreter.allocate_tensors()
     
-        return interpreter
+    return interpreter
 
 def carrega_imagem():
     
