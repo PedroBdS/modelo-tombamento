@@ -9,8 +9,8 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-    # https://drive.google.com/file/d/1QWGjUvJ6XNdRnLpL-2tuT6DMyoQcyLbe/view?usp=drive_link
-    url = 'https://drive.google.com/uc?id=1QWGjUvJ6XNdRnLpL-2tuT6DMyoQcyLbe'
+    # https://drive.google.com/file/d/1KyQVzCdvhIpspTJKZN86wFlFc-G8sQ1H/view?usp=drive_link
+    url = 'https://drive.google.com/uc?id=1KyQVzCdvhIpspTJKZN86wFlFc-G8sQ1H'
     
     gdown.download(url,'alura_tombamento_modelo.tflite')
     interpreter = tf.lite.Interpreter(model_path='alura_tombamento_modelo.tflite')
