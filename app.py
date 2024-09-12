@@ -52,7 +52,7 @@ def previsao(interpreter,image):
 
     # Obtém a saída do modelo
     output_data = interpreter.get_tensor(output_details[0]['index'])
-    classes = ['tombada']
+    classes = ['tombada', 'empe']
 
     df = pd.DataFrame()
     df['classes'] = classes
