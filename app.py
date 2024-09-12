@@ -9,8 +9,8 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-    # https://drive.google.com/file/d/1KyQVzCdvhIpspTJKZN86wFlFc-G8sQ1H/view?usp=drive_link
-    url = 'https://drive.google.com/uc?id=1KyQVzCdvhIpspTJKZN86wFlFc-G8sQ1H'
+    # https://drive.google.com/file/d/1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY/view?usp=drive_link
+    url = 'https://drive.google.com/uc?id=1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY'
     
     gdown.download(url,'alura_tombamento_modelo.tflite')
     interpreter = tf.lite.Interpreter(model_path='alura_tombamento_modelo.tflite')
@@ -23,7 +23,6 @@ def carrega_imagem():
     # Cria um file uploader que permite o usuário carregar imagens
     uploaded_file = st.file_uploader("Arraste e solte uma imagem aqui ou clique para selecionar uma", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
-        
         # Para ler a imagem como um objeto PIL Image
         image_data = uploaded_file.read()
         image = Image.open(io.BytesIO(image_data))
@@ -33,7 +32,7 @@ def carrega_imagem():
         st.success("Imagem carregada com sucesso!")
 
         #Pré-processamento da imagem
-        image = np.array(image, dtype = np.float32)
+        image = np.array(image, dtype=np.float32)
         image = image / 255.0  # Normalização para o intervalo [0, 1]
         image = np.expand_dims(image, axis=0)
 
