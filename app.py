@@ -18,11 +18,10 @@ def carrega_modelo():
     
     # return interpreter
 
-
     # https://drive.google.com/file/d/1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx/view?usp=sharing
     url = 'https://drive.google.com/uc?id=1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx'
     
-    gdown.download(url, 'indentificacao_de_latas.h5', quiet=False)
+    gdown.download(url, 'indentificacao_de_latas.h5')
     interpreter = keras.models.load_model('indentificacao_de_latas.h5')
     
     return interpreter
