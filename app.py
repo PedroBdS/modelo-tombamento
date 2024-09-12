@@ -15,14 +15,15 @@ def carrega_modelo():
     gdown.download(url,'alura_tombamento_modelo.tflite')
     interpreter = tf.lite.Interpreter(model_path='alura_tombamento_modelo.tflite')
     interpreter.allocate_tensors()
-
     
     return interpreter
 
 def carrega_imagem():
-        # Cria um file uploader que permite o usuário carregar imagens
+    
+    # Cria um file uploader que permite o usuário carregar imagens
     uploaded_file = st.file_uploader("Arraste e solte uma imagem aqui ou clique para selecionar uma", type=['png', 'jpg', 'jpeg'])
     if uploaded_file is not None:
+        
         # Para ler a imagem como um objeto PIL Image
         image_data = uploaded_file.read()
         image = Image.open(io.BytesIO(image_data))
@@ -32,7 +33,7 @@ def carrega_imagem():
         st.success("Imagem carregada com sucesso!")
 
         #Pré-processamento da imagem
-        image = np.array(image, dtype=np.float32)
+        image = np.array(image, dtype = np.float32)
         image = image / 255.0  # Normalização para o intervalo [0, 1]
         image = np.expand_dims(image, axis=0)
 
@@ -57,7 +58,7 @@ def previsao(interpreter,image):
     df['classes'] = classes
     df['probabilidades (%)'] = 100*output_data[0]
     fig = px.bar(df, y='classes', x='probabilidades (%)', orientation='h', text='probabilidades (%)',
-             title='Probabilidade de Classes de Doenças em Uvas')
+             title='Probabilidade de haver lata tombada')
     st.plotly_chart(fig)
 
 def main():
