@@ -6,6 +6,7 @@ from PIL import Image
 import numpy as np
 import pandas as pd
 import plotly.express as px
+import keras
 
 @st.cache_resource
 def carrega_modelo():
@@ -22,7 +23,7 @@ def carrega_modelo():
     url = 'https://drive.google.com/uc?id=1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx'
     
     gdown.download(url, 'indentificacao_de_latas.h5', quiet=False)
-    interpreter = tf.keras.models.load_model('indentificacao_de_latas.h5')
+    interpreter = keras.models.load_model('indentificacao_de_latas.h5')
     
     return interpreter
 
