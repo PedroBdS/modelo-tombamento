@@ -21,8 +21,8 @@ def carrega_modelo():
     # https://drive.google.com/file/d/1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx/view?usp=sharing
     url = 'https://drive.google.com/uc?id=1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx'
     
-    gdown.download(url, 'indentificacao_de_latas.h5')
-    interpreter = keras.models.load_model('indentificacao_de_latas.h5')
+    gdown.download(url, 'classificacao_de_latas.h5')
+    interpreter = keras.models.load_model(model_path='classificacao_de_latas.h5')
     
     return interpreter
 
