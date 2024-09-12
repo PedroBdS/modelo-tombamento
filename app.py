@@ -12,8 +12,8 @@ def carrega_modelo():
     # https://drive.google.com/file/d/1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY/view?usp=drive_link
     url = 'https://drive.google.com/uc?id=1-6HMPjRZIfirjnNshZ6zCOQMFXaVLkSY'
     
-    gdown.download(url,'alura_tombamento_modelo.tflite')
-    interpreter = tf.lite.Interpreter(model_path='alura_tombamento_modelo.tflite')
+    gdown.download(url,'indentificacao_de_latas.keras')
+    interpreter = tf.lite.Interpreter(model_path='indentificacao_de_latas.keras')
     interpreter.allocate_tensors()
     
     return interpreter
