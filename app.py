@@ -18,8 +18,8 @@ def carrega_modelo():
     
     # return interpreter
 
-    # https://drive.google.com/file/d/1fD226BF_aZHofcBl9MMqoXAVyWxCS1ep/view?usp=sharing
-    url = 'https://drive.google.com/uc?id=1fD226BF_aZHofcBl9MMqoXAVyWxCS1ep'
+    # https://drive.google.com/file/d/1XwTwZAMhevW4X_z2c0fKJFW6Rf1VkIWT/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1XwTwZAMhevW4X_z2c0fKJFW6Rf1VkIWT'
     
     gdown.download(url, 'classificacao_de_latas.h5')
     interpreter = keras.models.load_model(model_path='classificacao_de_latas.h5')
