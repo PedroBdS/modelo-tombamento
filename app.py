@@ -24,8 +24,8 @@ def carrega_modelo():
     # gdown.download(url, 'classificacao_de_latas.h5')
     # interpreter = keras.models.load_model(model_path='classificacao_de_latas.h5')
     
-    carregar = st.file_uploader("Arraste e solte a classificacao_de_latas.h5 aqui ou clique para selecionar", type=['h5'])
-    interpreter = keras.models.load_model(carregar)
+    st.file_uploader("Arraste e solte a classificacao_de_latas.h5 aqui ou clique para selecionar", type=['h5'])
+    interpreter = keras.models.load_model("classificacao_de_latas.h5")
     return interpreter
 
 def carrega_imagem():
