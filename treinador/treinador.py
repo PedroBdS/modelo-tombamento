@@ -6,6 +6,7 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+import keras
 
 def plota_resultados(history,epocas):
     acc = history.history['accuracy']
@@ -124,3 +125,5 @@ modelo.summary()
 
 # Salvar
 modelo.save('./modelo-tombamento/modelo.keras')
+
+# modelo.save('./modelo-tombamento/modelo.keras')
