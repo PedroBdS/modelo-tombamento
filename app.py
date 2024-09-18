@@ -22,13 +22,8 @@ def carrega_modelo():
     url = 'https://drive.google.com/uc?id=1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN'
     
     gdown.download(url, 'modelo_apos_aumento.keras')
-    interpreter = keras.models.load_model('modelo_apos_aumento.keras')
+    interpreter = keras.saving.load_model('modelo_apos_aumento.keras')
     return interpreter
-
-    # modelo = st.file_uploader("Arraste e solte a classificacao_de_latas.h5 aqui ou clique para selecionar", type=['h5'])
-    # if modelo is not None:
-    #     interpreter = keras.models.load_model("classificacao_de_latas.h5")
-    #     return interpreter
 
 def carrega_imagem():
     
