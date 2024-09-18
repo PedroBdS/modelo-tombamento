@@ -51,26 +51,7 @@ def carrega_imagem():
         return image
 
 def previsao(interpreter,image):
-# Realiza a previsão diretamente com o modelo Keras
-    output_data = interpreter.predict(image)
 
-    # Classes de saída (ajustar conforme necessário)
-    classes = ['tombada', 'empe']
-
-    # Formata os resultados em um DataFrame
-    df = pd.DataFrame()
-    df['classes'] = classes
-    df['probabilidades (%)'] = 100 * output_data[0]
-    
-    # Cria o gráfico com Plotly
-    fig = px.bar(df, y='classes', x='probabilidades (%)', orientation='h', text='probabilidades (%)',
-                 title='Probabilidade de haver lata tombada')
-    
-    # Exibe o gráfico no Streamlit
-    st.plotly_chart(fig)
-
-
-    '''
     # Obtém detalhes dos tensores de entrada e saída
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
@@ -91,12 +72,12 @@ def previsao(interpreter,image):
     fig = px.bar(df, y='classes', x='probabilidades (%)', orientation='h', text='probabilidades (%)',
              title='Probabilidade de haver lata tombada')
     st.plotly_chart(fig)
-    '''
+
 def main():
 
     st.set_page_config(
         page_title="Identifica latas tombadas",
-        page_icon="🍇",
+        page_icon="🧠",
     )
     
     st.write("# Classifica latas tombadas")
