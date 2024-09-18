@@ -22,7 +22,9 @@ def carrega_modelo():
     url = 'https://drive.google.com/uc?id=1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN'
     
     gdown.download(url, 'modelo_apos_aumento.keras')
-    interpreter = keras.saving.load_model('modelo_apos_aumento.keras')
+    interpreter = keras.saving.load_model(model_path = 'modelo_apos_aumento.keras')
+    interpreter.allocate_tensors()
+    
     return interpreter
 
 def carrega_imagem():
