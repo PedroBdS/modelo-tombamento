@@ -10,14 +10,17 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-    # url = 'https://drive.google.com/uc?id=1-4_L_9H1Xd5v0OSR3KK5SAkGGbYuAOlx'
-    
-    # gdown.download(url,'modelo_quantizado16bits.tflite')
-    # interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
-    # interpreter.allocate_tensors() 
-    
-    # return interpreter
 
+    # https://drive.google.com/file/d/1BM19kejTaixjWY6fjr12TIN9IB3dMlcw/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1BM19kejTaixjWY6fjr12TIN9IB3dMlcw'
+    
+    gdown.download(url,'modelo_quantizado16bits.tflite')
+    interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
+    interpreter.allocate_tensors() 
+    
+    return interpreter
+
+    '''
     # https://drive.google.com/file/d/1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR/view?usp=sharing
     url = 'https://drive.google.com/uc?id=1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR'
     
@@ -26,7 +29,7 @@ def carrega_modelo():
     interpreter.allocate_tensors()
 
     return interpreter
-
+    '''
 def carrega_imagem():
     
     # Cria um file uploader que permite o usuário carregar imagens
