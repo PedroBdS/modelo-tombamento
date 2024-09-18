@@ -121,7 +121,7 @@ history = modelo.fit(
 
 modelo.summary()
 
-modelo.save('modelo_apos_aumento.h5')
+modelo.save('modelo_apos_aumento.keras')
 
 plota_resultados(history,epocas)
 

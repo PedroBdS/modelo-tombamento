@@ -18,11 +18,11 @@ def carrega_modelo():
     
     # return interpreter
 
-    # https://drive.google.com/file/d/1XwTwZAMhevW4X_z2c0fKJFW6Rf1VkIWT/view?usp=sharing
-    url = 'https://drive.google.com/uc?id=1XwTwZAMhevW4X_z2c0fKJFW6Rf1VkIWT'
+    # https://drive.google.com/file/d/1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN'
     
-    gdown.download(url, 'classificacao_de_latas.h5')
-    interpreter = keras.models.load_model('classificacao_de_latas.h5')
+    gdown.download(url, 'modelo_apos_aumento.keras')
+    interpreter = keras.models.load_model('modelo_apos_aumento.keras')
     return interpreter
 
     # modelo = st.file_uploader("Arraste e solte a classificacao_de_latas.h5 aqui ou clique para selecionar", type=['h5'])
