@@ -1,12 +1,12 @@
 import streamlit as st
 import gdown
 import tensorflow as tf
+from keras import load_model
 import io
 from PIL import Image
 import numpy as np
 import pandas as pd
 import plotly.express as px
-import keras
 
 @st.cache_resource
 def carrega_modelo():
@@ -14,15 +14,15 @@ def carrega_modelo():
     
     # gdown.download(url,'modelo_quantizado16bits.tflite')
     # interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
-    # interpreter.allocate_tensors()
+    # interpreter.allocate_tensors() 
     
     # return interpreter
 
-    # https://drive.google.com/file/d/1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN/view?usp=sharing
-    url = 'https://drive.google.com/uc?id=1UVnoWNwRVQ2t2SrpLDwaNwkaFHf5X7LN'
+    # https://drive.google.com/file/d/1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR/view?usp=sharing
+    url = 'https://drive.google.com/uc?id=1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR'
     
-    gdown.download(url, 'modelo_apos_aumento.keras')
-    interpreter = keras.saving.load_model(filepath='modelo_apos_aumento.keras')
+    gdown.download(url, 'modelo.keras')
+    interpreter = load_model(filepath='modelo.keras')
     interpreter.allocate_tensors()
 
     return interpreter
