@@ -111,7 +111,7 @@ modelo.compile(
     metrics=['accuracy']
     )
 
-epocas = 20
+epocas = 50
 
 history = modelo.fit(
     treino,
@@ -121,7 +121,7 @@ history = modelo.fit(
 
 modelo.summary()
 
-modelo.save('modelo_apos_aumento.keras')
+modelo.save('./modelo-tombamento')
 
 plota_resultados(history,epocas)
 
