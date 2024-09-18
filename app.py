@@ -1,7 +1,7 @@
 import streamlit as st
 import gdown
 import tensorflow as tf
-from keras import load_model
+import keras
 import io
 from PIL import Image
 import numpy as np
@@ -22,7 +22,7 @@ def carrega_modelo():
     url = 'https://drive.google.com/uc?id=1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR'
     
     gdown.download(url, 'modelo.keras')
-    interpreter = load_model(filepath='modelo.keras')
+    interpreter = keras.load_model(filepath='modelo.keras')
     interpreter.allocate_tensors()
 
     return interpreter
