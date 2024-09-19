@@ -10,7 +10,7 @@ import plotly.express as px
 
 @st.cache_resource
 def carrega_modelo():
-
+    '''
     # https://drive.google.com/file/d/1cfpseDIX__rpdGW-ruyfCZDkGluVZ7AM/view?usp=sharing
     url = 'https://drive.google.com/uc?id=1cfpseDIX__rpdGW-ruyfCZDkGluVZ7AM'
     nome = 'modelo_quantizado16bits_2.tflite'
@@ -25,15 +25,25 @@ def carrega_modelo():
     return interpreter
 
     '''
+    # URL do modelo .keras
     # https://drive.google.com/file/d/1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR/view?usp=sharing
+
     url = 'https://drive.google.com/uc?id=1TjXwqaXmlmhildNXq2BUgwVTgaDJphkR'
     
-    gdown.download(url, 'modelo.keras')
-    interpreter = load_model(filepath='modelo.keras')
-    interpreter.allocate_tensors()
+    # Nome do arquivo a ser salvo
+    nome = 'modelo.keras'
 
-    return interpreter
-    '''
+    # Faz o download do modelo
+    gdown.download(url, nome, quiet=False)
+
+    # Carrega o modelo .keras
+    modelo = load_model(filepath=nome)
+    
+    st.write(f'Modelo carregado: {nome}')
+
+    return modelo
+    
+
 def carrega_imagem():
     
     # Cria um file uploader que permite o usuário carregar imagens
@@ -54,8 +64,24 @@ def carrega_imagem():
 
         return image
 
-def previsao(interpreter,image):
+def previsao(modelo,image):
 
+    # Executa a inferência com o modelo .keras
+    output_data = modelo.predict(image)
+
+    classes = ['Tombada', 'Em_pe']
+
+    # Converte as probabilidades para porcentagens
+    df = pd.DataFrame()
+    df['classes'] = classes
+    df['probabilidades (%)'] = 100 * output_data[0]
+    fig = px.bar(df, y='classes', x='probabilidades (%)', orientation='h', text='probabilidades (%)',
+                 title='Probabilidade de haver lata tombada')
+    
+    st.plotly_chart(fig)
+
+
+    '''
     # Obtém detalhes dos tensores de entrada e saída
     input_details = interpreter.get_input_details()
     output_details = interpreter.get_output_details()
@@ -76,7 +102,7 @@ def previsao(interpreter,image):
     fig = px.bar(df, y='classes', x='probabilidades (%)', orientation='h', text='probabilidades (%)',
              title='Probabilidade de haver lata tombada')
     st.plotly_chart(fig)
-
+    '''
 def main():
 
     st.set_page_config(
