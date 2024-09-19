@@ -1,7 +1,7 @@
 import streamlit as st
 import gdown
 import tensorflow as tf
-from tensorflow.keras.models import load_model
+from keras.models import load_model
 import io
 from PIL import Image
 import numpy as np
