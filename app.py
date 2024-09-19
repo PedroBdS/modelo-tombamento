@@ -14,8 +14,8 @@ def carrega_modelo():
     # https://drive.google.com/file/d/1cfpseDIX__rpdGW-ruyfCZDkGluVZ7AM/view?usp=sharing
     url = 'https://drive.google.com/uc?id=1cfpseDIX__rpdGW-ruyfCZDkGluVZ7AM'
     
-    gdown.download(url,'modelo_quantizado16bits.tflite')
-    interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits.tflite')
+    gdown.download(url,'modelo_quantizado16bits_2.tflite')
+    interpreter = tf.lite.Interpreter(model_path='modelo_quantizado16bits_2.tflite')
     interpreter.allocate_tensors() 
     
     return interpreter
