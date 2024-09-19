@@ -33,7 +33,7 @@ path = './modelo-tombamento/dataset_109x109_2'
 
 data_dir = pathlib.Path(path)
 subfolders = [f.name for f in data_dir.iterdir() if f.is_dir()]
-latatombada = list(data_dir.glob('empe/*'))
+latatombada = list(data_dir.glob('Em_pe/*'))
 # print(len(list(data_dir.glob('*/*.jpg'))))
 # print(subfolders)
 
@@ -128,17 +128,16 @@ plota_resultados(history,epocas)
 modelo.summary()
 
 # Salvar
-'''
 modelo.save('./modelo-tombamento/modelo.keras')
-'''
+
 
 # Salvar lite
-converter = tf.lite.TFLiteConverter.from_keras_model(modelo)
+# converter = tf.lite.TFLiteConverter.from_keras_model(modelo)
 
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
-converter.target_spec.supported_types = [tf.float16]
-modelo_tflite_quantizado = converter.convert()
+# converter.optimizations = [tf.lite.Optimize.DEFAULT]
+# converter.target_spec.supported_types = [tf.float16]
+# modelo_tflite_quantizado = converter.convert()
 
-# Salvar o modelo TFLite quantizado
-with open('modelo_quantizado16bits.tflite', 'wb') as f:
-    f.write(modelo_tflite_quantizado)
+# # Salvar o modelo TFLite quantizado
+# with open('modelo_quantizado16bits.tflite', 'wb') as f:
+#     f.write(modelo_tflite_quantizado)
