@@ -30,7 +30,7 @@ def plota_resultados(history,epocas):
     plt.show()
 
 # Importar imagens
-path = './modelo-tombamento/dataset_37x37/'
+path = './modelo-tombamento/dataset_109x109/'
 
 data_dir = pathlib.Path(path)
 subfolders = [f.name for f in data_dir.iterdir() if f.is_dir()]
@@ -86,8 +86,8 @@ callbacks = myCallback()
 data_augmentation = tf.keras.Sequential(
   [
     tf.keras.layers.RandomFlip("horizontal"),
-    tf.keras.layers.RandomRotation(0.05),
-    tf.keras.layers.RandomZoom(0.05),
+    # tf.keras.layers.RandomRotation(0.05),
+    # tf.keras.layers.RandomZoom(0.05),
   ])
 
 # Modelo
@@ -95,13 +95,16 @@ modelo = tf.keras.models.Sequential([
     tf.keras.layers.Input(shape=shape),
     data_augmentation,
     tf.keras.layers.Rescaling(1./255),
-    # Add convolutions and max pooling
+
     tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
     tf.keras.layers.MaxPooling2D(2, 2),
-    # tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
-    # tf.keras.layers.MaxPooling2D(2,2),
+    
+    tf.keras.layers.Conv2D(32, (3,3), activation='relu'),
+    tf.keras.layers.MaxPooling2D(2,2),
+
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(128,activation=tf.nn.relu),
+    tf.keras.layers.Dense(64,activation=tf.nn.relu),
     tf.keras.layers.Dense(2, activation=tf.nn.softmax)
 ])
 
@@ -112,11 +115,13 @@ modelo.compile(
     )
 
 # Treinamento
-epocas = 50
+epocas = 18
+
 history = modelo.fit(
     treino,
     validation_data=validacao,
-    epochs=epocas
+    epochs=epocas,
+    # callbacks=[callbacks]
 )
 
 plota_resultados(history,epocas)
