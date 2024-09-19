@@ -6,7 +6,6 @@ from PIL import Image
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
-import keras
 
 def plota_resultados(history,epocas):
     acc = history.history['accuracy']
@@ -30,7 +29,7 @@ def plota_resultados(history,epocas):
     plt.show()
 
 # Importar imagens
-path = './modelo-tombamento/dataset_109x109/'
+path = './modelo-tombamento/dataset_109x109_2'
 
 data_dir = pathlib.Path(path)
 subfolders = [f.name for f in data_dir.iterdir() if f.is_dir()]
@@ -115,7 +114,7 @@ modelo.compile(
     )
 
 # Treinamento
-epocas = 18
+epocas = 14
 
 history = modelo.fit(
     treino,
